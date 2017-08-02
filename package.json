@@ -1,0 +1,22 @@
+{
+  "name": "language-templating",
+  "version": "1.0.0",
+  "description": "Small handlebars wrapper to make developing websites for different languages easy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamCosta1/language-templating.git"
+  },
+  "keywords": [
+    "handlebars.js"
+  ],
+  "author": "Sam Costa <samuel.dacosta@student.manchester.ac.uk> (https://github.com/SamCosta1/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamCosta1/language-templating/issues"
+  },
+  "homepage": "https://github.com/SamCosta1/language-templating#readme"
+}
