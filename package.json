@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/SamCosta1/language-templating/issues"
   },
-  "homepage": "https://github.com/SamCosta1/language-templating#readme"
+  "homepage": "https://github.com/SamCosta1/language-templating#readme",
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "fs-extra": "^4.0.1",
+    "handlebars": "^4.0.10",
+    "node-watch": "^0.5.5"
+  }
 }
