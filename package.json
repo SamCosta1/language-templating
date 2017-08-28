@@ -11,10 +11,14 @@
     "url": "git+https://github.com/SamCosta1/language-templating.git"
   },
   "keywords": [
-    "handlebars.js"
+    "handlebars.js",
+    "languages",
+    "internationalisation",
+    "i18n",
+    "templating"
   ],
   "author": "Sam Costa <samuel.dacosta@student.manchester.ac.uk> (https://github.com/SamCosta1/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SamCosta1/language-templating/issues"
   },

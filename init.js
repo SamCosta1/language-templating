@@ -10,6 +10,7 @@ const src = "source directory",
       data = "data files directory",
       partials = "partials directory",
       partialsData = "partials data directory";
+      index = "index page";
 
 
 
@@ -60,17 +61,24 @@ function getConfig() {
       nextSchema.properties[partialsData] =  {
                required: true,
                default: result1[src] + "/templates/" + "partials-data"
-      };   
+      };  
       
+      nextSchema.properties[partialsData] =  {
+               required: true,
+               default: result1[src] + "/templates/" + "partials-data"
+      };   
 
+      nextSchema.properties[index] = {
+               required: false,
+               default: result1[src] + '/index.html'
+      }
+      
       getInput(nextSchema).then((result2) => {
          Object.assign(result1, result2);
          fs.writeFile('./lang-config.json', JSON.stringify(result1, null, 3), (err) => {     if (err) return console.log(err);    }); 
          handleDirectories(result1);
       }).catch(error);
    }).catch(error);
-
-
 }
 
 function handleDirectories(result) {
@@ -93,13 +101,13 @@ function createDirectories(result) {
    createDirectory(result[data]);
    createDirectory(result[partials]);
    createDirectory(result[partialsData]);
-
-   createDirectory(result[views] + "/" + result[lang]);
+  
    createDirectory(result[data] + "/" + result[lang]);
 
-   fs.writeFile(result[views] + "/" + result[lang] + "/example.html", '<div>{{test}}</div>', (err) => {     if (err) return console.log(err);    }); 
+   fs.writeFile(result[views] + "/example.html", '<div>{{test}}</div>', (err) => {     if (err) return console.log(err);    }); 
    fs.writeFile(result[data] + "/" + result[lang] + "/example.json", '{ "test": "a test"}', (err) => {     if (err) return console.log(err);    }); 
-
+   
+   handleIndexPage(result[index], result['default language']);
 }
 
 function createDirectory(dir) {
@@ -136,4 +144,22 @@ function stripSlashes(obj) {
          if (str[str.length - 1] == '/')
             obj[prop] = str.substring(0, str.length - 1);
       }
+}
+
+function handleIndexPage(indexPath, lang) {
+      const msg = "Generate the index page? (any existing index may be overwritten) [Y/n]";
+      prompt.get([msg], (err, ans) => {
+            if (err) { error(err); return; }
+
+            var response = ans[msg].toLowerCase();
+            if (response != 'y' && response != 'yes') return;
+
+            fs.writeFile(indexPath, `
+            <script>
+                  document.addEventListener("DOMContentLoaded", function(event) { 
+                        window.location.href = "./${lang}/";
+                  });
+            </script>
+            `, (err) => {     if (err) return console.log(err);    }); 
+      });
 }
