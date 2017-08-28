@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "lang-init": "./init",
-    "lang-dev": "./templateEngine -d",
-    "lang-build": "./templateEngine"    
+    "lang-init": "./init.js",
+    "lang-dev": "./templateEngine.js -d",
+    "lang-build": "./templateEngine.js"    
   },
   "repository": {
     "type": "git",
