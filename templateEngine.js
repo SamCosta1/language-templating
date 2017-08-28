@@ -1,3 +1,5 @@
+#!/usr/bin/env 
+
 const   Handlebars = require('handlebars'),
         fs = require('fs-extra'),
         watch = require('node-watch'),
@@ -136,7 +138,7 @@ function readFiles(file) {
 function compileTemplate(lang, file, json, HTML) {
   var template = Handlebars.compile(HTML);
   var data = JSON.parse(json);
-  
+
   Object.assign(data, extraData[lang], { "lang": lang });
   var html = template(data);
   fs.writeFile(`${dist}/${lang}/${file}.html`, html, (err) => {     if (err) console.log(err);    }); 

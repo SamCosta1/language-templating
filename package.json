@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "lang-init": "./init",
+    "lang-dev": "./templateEngine -d",
+    "lang-build": "./templateEngine"    
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SamCosta1/language-templating.git"
