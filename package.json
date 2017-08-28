@@ -8,7 +8,6 @@
   },
   "bin": {
     "lang-init": "./init.js",
-    "lang-dev": "./templateEngine.js -d",
     "lang-build": "./templateEngine.js"    
   },
   "repository": {
