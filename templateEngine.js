@@ -1,5 +1,5 @@
-#!/usr/bin/env 
-
+#!/usr/bin/env node
+console.log("running");
 const   Handlebars = require('handlebars'),
         fs = require('fs-extra'),
         watch = require('node-watch'),
@@ -13,7 +13,6 @@ const partials = config['partials directory'];
 const index = config['index page'];
 
 var extraData = {};
-
 compileAll();
 
 // Only watch files in debug mode
@@ -106,7 +105,6 @@ function copyIndex() {
 // Go through each view and compile
 function readMainTemplates() {
   fs.readdir(views, (err, files) => {
-    console.log("main", files);
     files.forEach(file => {
       readFiles(file.replace(/.html/, ""));
     });
@@ -141,5 +139,7 @@ function compileTemplate(lang, file, json, HTML) {
 
   Object.assign(data, extraData[lang], { "lang": lang });
   var html = template(data);
+
+  console.log(`Compiling: ${file}.html`);
   fs.writeFile(`${dist}/${lang}/${file}.html`, html, (err) => {     if (err) console.log(err);    }); 
 }
